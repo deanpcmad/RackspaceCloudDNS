@@ -38,6 +38,11 @@ The RackspaceCloudDns gem is built to access all the Rackspace Cloud DNS functio
 RackspaceCloudDns::Domain.all
 ```
 
+#### Search all domains
+```ruby
+RackspaceCloudDns::Domain.search("mydomain.com")
+```
+
 #### Shows a specified domain & all records by the domain ID
 ```ruby
 RackspaceCloudDns::Domain.show(123123)
