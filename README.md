@@ -75,6 +75,17 @@ RackspaceCloudDns::Record.all(123123)
 RackspaceCloudDns::Record.search(123123, "type", "name", "data")
 ```
 
+#### Show a specified record for a domain
+```ruby
+RackspaceCloudDns::Record.show(123123, 456456)
+```
+
+
+
+
+
+
+
 
 #### Create a new record for a domain
 The TTL is set to 3600 by default and the comment is optional
