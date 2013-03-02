@@ -1,6 +1,6 @@
 # RackspaceCloudDns
 
-TODO: Write a gem description
+A gem to interact with the [Rackspace Cloud DNS](http://www.rackspace.co.uk/cloud-dns/) API.
 
 ## Installation
 
@@ -18,12 +18,43 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+The Rackspace Cloud API requires authentication using your username & your API Key.
+
+In a Rails app, create a file called `config/initializers/rackspace_cloud.rb` and fill it with this info (changing it for your account, etc)
+
+```ruby
+RackspaceCloudDns.username = "user"
+RackspaceCloudDns.api_key = "apikey"
+```
+
+## Commands
+
+The RackspaceCloudDns gem is built to access all the Rackspace Cloud DNS functions. Below are a list of commands currently supported.
+
+
+### Projects
+#### All domains
+```ruby
+RackspaceCloudDns::Domain.all
+```
+
+#### Shows a specified domain & all records by the domain ID
+```ruby
+RackspaceCloudDns::Domain.show(123123)
+```
+
+#### Create a new domain
+The TTL is set to 3600 by default and the comment is optional
+```ruby
+RackspaceCloudDns::Domain.create("domain_name.com", "email_address", "ttl", "comment")
+```
+
+#### Create a new record for a domain
+The TTL is set to 3600 by default and the comment is optional
+```ruby
+RackspaceCloudDns::Domain.create_record(123123, "subdomain", "A", "192.168.1.1")
+
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Fork this project, make any changes and create a pull request :)
