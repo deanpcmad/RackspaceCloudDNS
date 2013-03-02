@@ -83,8 +83,15 @@ RackspaceCloudDns::Record.show(123123, 456456)
 #### Create a new record for a domain
 The priority is only required for MX and SRV records.
 ```ruby
-RackspaceCloudDns::Domain.create_record(123123, "subdomain", "A", "192.168.1.1", "10")
+RackspaceCloudDns::Record.create(123123, "subdomain", "A", "192.168.1.1", "10")
 ```
+
+#### Edit a record for a domain
+The priority is only required for MX and SRV records.
+```ruby
+RackspaceCloudDns::Record.edit(123123, 456456, "images", "192.168.1.1", "10")
+```
+
 
 ## Contributing
 

@@ -23,5 +23,12 @@ module RackspaceCloudDns
 			RackspaceCloudDns::Request.request("domains/#{domain_id}/records", :post, options)
 		end
 
+		# Edit a record for a domain
+		def self.edit(domain_id, record_id, name, data, priority)
+			options = {:records => [:name => "#{name}.#{RackspaceCloudDns::Domain.show(domain_id)["name"]}", :data => data, :priority => priority]}
+
+			RackspaceCloudDns::Request.request("domains/#{domain_id}/records/#{record_id}", :put, options)
+		end
+
 	end
 end
