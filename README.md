@@ -80,17 +80,10 @@ RackspaceCloudDns::Record.search(123123, "type", "name", "data")
 RackspaceCloudDns::Record.show(123123, 456456)
 ```
 
-
-
-
-
-
-
-
 #### Create a new record for a domain
-The TTL is set to 3600 by default and the comment is optional
+The priority is only required for MX and SRV records.
 ```ruby
-RackspaceCloudDns::Domain.create_record(123123, "subdomain", "A", "192.168.1.1")
+RackspaceCloudDns::Domain.create_record(123123, "subdomain", "A", "192.168.1.1", "10")
 ```
 
 ## Contributing

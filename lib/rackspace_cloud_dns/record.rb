@@ -16,5 +16,12 @@ module RackspaceCloudDns
 			RackspaceCloudDns::Request.request("domains/#{domain_id}/records/#{record_id}", :get)
 		end
 
+		# Create a record on a domain
+		def self.create(domain_id, name, type, data, priority=nil)
+			options = {:records => [:name => "#{name}.#{RackspaceCloudDns::Domain.show(domain_id)["name"]}", :type => type, :data => data, :priority => priority]}
+
+			RackspaceCloudDns::Request.request("domains/#{domain_id}/records", :post, options)
+		end
+
 	end
 end
