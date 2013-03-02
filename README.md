@@ -64,6 +64,7 @@ RackspaceCloudDns::Domain.edit(123123, "email", "ttl", "comment")
 RackspaceCloudDns::Domain.destroy(123123)
 ```
 
+
 ### Records
 #### All records for a domain
 ```ruby
@@ -91,6 +92,12 @@ The priority is only required for MX and SRV records.
 ```ruby
 RackspaceCloudDns::Record.edit(123123, 456456, "images", "192.168.1.1", "10")
 ```
+
+#### Delete a record on a domain
+```ruby
+RackspaceCloudDns::Record.destroy(123123, 456456)
+```
+
 
 
 ## Contributing

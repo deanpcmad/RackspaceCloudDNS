@@ -30,5 +30,10 @@ module RackspaceCloudDns
 			RackspaceCloudDns::Request.request("domains/#{domain_id}/records/#{record_id}", :put, options)
 		end
 
+		# Destroy a record
+		def self.destroy(domain_id, record_id)
+			RackspaceCloudDns::Request.request("domains/#{domain_id}/records/#{record_id}", :delete)
+		end
+
 	end
 end
