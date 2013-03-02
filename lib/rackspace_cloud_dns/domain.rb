@@ -31,6 +31,11 @@ module RackspaceCloudDns
 			RackspaceCloudDns::Request.request("domains/#{domain_id}", :put, options)
 		end
 
+		# Destroy a domain
+		def self.destroy(domain_id)
+			RackspaceCloudDns::Request.request("domains/#{domain_id}", :delete)
+		end
+
 		# Create a record on a domain
 		def self.create_record(domain_id, name, type, data, ttl=86400)
 			options = {:records => [:name => "#{name}.#{RackspaceCloudDns::Domain.show(domain_id)["name"]}", :type => type, :data => data, :ttl => ttl]}

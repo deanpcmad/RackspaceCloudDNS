@@ -32,7 +32,7 @@ RackspaceCloudDns.api_key = "apikey"
 The RackspaceCloudDns gem is built to access all the Rackspace Cloud DNS functions. Below are a list of commands currently supported.
 
 
-### Projects
+### Domains
 #### All domains
 ```ruby
 RackspaceCloudDns::Domain.all
@@ -41,6 +41,12 @@ RackspaceCloudDns::Domain.all
 #### Search all domains
 ```ruby
 RackspaceCloudDns::Domain.search("mydomain.com")
+```
+
+#### Create a new domain
+The TTL is set to 3600 by default and the comment is optional
+```ruby
+RackspaceCloudDns::Domain.create("domain_name.com", "email_address", "ttl", "comment")
 ```
 
 #### Shows a specified domain & all records by the domain ID
@@ -53,11 +59,15 @@ RackspaceCloudDns::Domain.show(123123)
 RackspaceCloudDns::Domain.edit(123123, "email", "ttl", "comment")
 ```
 
-#### Create a new domain
-The TTL is set to 3600 by default and the comment is optional
+#### Delete a domain by the domain ID
 ```ruby
-RackspaceCloudDns::Domain.create("domain_name.com", "email_address", "ttl", "comment")
+RackspaceCloudDns::Domain.destroy(123123)
 ```
+
+
+
+
+
 
 #### Create a new record for a domain
 The TTL is set to 3600 by default and the comment is optional
