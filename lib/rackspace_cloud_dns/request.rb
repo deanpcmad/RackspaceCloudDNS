@@ -24,8 +24,15 @@ module RackspaceCloudDns
     end
 
     def make
-      if RackspaceCloudDns.host
-        uri = URI.parse([RackspaceCloudDns.host, @path].join('/'))
+      # if RackspaceCloudDns.host
+      #   uri = URI.parse([RackspaceCloudDns.host, @path].join('/'))
+      # else
+      #   uri = URI.parse(["https://lon.identity.api.rackspacecloud.com/v2.0/", @path].join('/'))
+      # end
+
+      # use the dns_endpoint or default to the identity api
+      if RackspaceCloudDns.dns_endpoint
+        uri = URI.parse([RackspaceCloudDns.dns_endpoint, @path].join('/'))
       else
         uri = URI.parse(["https://lon.identity.api.rackspacecloud.com/v2.0/", @path].join('/'))
       end
@@ -33,6 +40,7 @@ module RackspaceCloudDns
       http_request = http_class.new(uri.request_uri)
       http_request.initialize_http_header({"User-Agent" => "RackspaceCloudDnsRubyClient/#{RackspaceCloudDns::VERSION}"})
       http_request.initialize_http_header({"Accept" => "application/json"})
+      http_request.initialize_http_header({"X-Auth-Token" => RackspaceCloudDns.auth_token}) if RackspaceCloudDns.auth_token
       http_request.content_type = "application/json"
     
       http = Net::HTTP.new(uri.host, uri.port)
@@ -44,7 +52,7 @@ module RackspaceCloudDns
 
       # show detailed info about the request
       puts "[RackspaceCloudDns] Sent: #{data}"
-      puts "[RackspaceCloudDns] Requesting: #{[path].join('/')}"
+      puts "[RackspaceCloudDns] Requesting: #{[path].join('/')} on #{uri.host}#{uri.path}"
       
     
       http_result = http.request(http_request, @data.to_json)
