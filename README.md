@@ -64,16 +64,18 @@ RackspaceCloudDns::Domain.edit(123123, "email", "ttl", "comment")
 RackspaceCloudDns::Domain.destroy(123123)
 ```
 
-
-
-
+### Records
+#### All records for a domain
+```ruby
+RackspaceCloudDns::Record.all(123123)
+```
 
 
 #### Create a new record for a domain
 The TTL is set to 3600 by default and the comment is optional
 ```ruby
 RackspaceCloudDns::Domain.create_record(123123, "subdomain", "A", "192.168.1.1")
-
+```
 
 ## Contributing
 

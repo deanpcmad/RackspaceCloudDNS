@@ -6,6 +6,7 @@ require 'json'
 require "rackspace_cloud_dns/request"
 require "rackspace_cloud_dns/authenticate"
 require "rackspace_cloud_dns/domain"
+require "rackspace_cloud_dns/record"
 require "rackspace_cloud_dns/version"
 
 module RackspaceCloudDns
