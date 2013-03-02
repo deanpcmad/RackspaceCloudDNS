@@ -7,7 +7,7 @@ module RackspaceCloudDns
 		end
 
 		# Search though all records for a domain
-		def self.search(domain_id, name, type, data)
+		def self.search(domain_id, name, type=nil, data=nil)
 			RackspaceCloudDns::Request.request("domains/#{domain_id}/records?name=#{name}&type=#{type}&data=#{data}", :get)
 		end
 

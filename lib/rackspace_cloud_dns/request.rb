@@ -51,8 +51,8 @@ module RackspaceCloudDns
       end
 
       # show detailed info about the request
-      puts "[RackspaceCloudDns] Sent: #{data}"
-      puts "[RackspaceCloudDns] Requesting: #{[path].join('/')} on #{uri.host}#{uri.path}"
+      # puts "[RackspaceCloudDns] Sent: #{data}"
+      # puts "[RackspaceCloudDns] Requesting: #{[path].join('/')} on #{uri.host}#{uri.path}"
       
     
       http_result = http.request(http_request, @data.to_json)
@@ -80,8 +80,7 @@ module RackspaceCloudDns
         raise RackspaceCloudDns::Errors::CommunicationError, http_result.body
       end
 
-      puts "[RackspaceCloudDns] Response: #{http_result.body}"
-
+      # puts "[RackspaceCloudDns] Response: #{http_result.body}"
 
 
       self

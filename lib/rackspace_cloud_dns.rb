@@ -14,13 +14,13 @@ module RackspaceCloudDns
 	class << self
 
 		# API Host. UK is default
-    attr_accessor :host
+    # attr_accessor :host
+
+    # API Authentication
+    attr_accessor :username, :api_key
 
     # Auth Token
     attr_accessor :auth_token
-    
-    # API Authentication
-    attr_accessor :username, :api_key
 
     # API DNS Endpoint
     attr_accessor :dns_endpoint
