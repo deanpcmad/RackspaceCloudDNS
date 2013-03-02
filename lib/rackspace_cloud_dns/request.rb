@@ -24,12 +24,16 @@ module RackspaceCloudDns
     end
 
     def make
-      uri = URI.parse(["https://api3.codebasehq.com", @path].join('/'))
+      if RackspaceCloudDns.host
+        uri = URI.parse([RackspaceCloudDns.host, @path].join('/'))
+      else
+        uri = URI.parse(["https://lon.identity.api.rackspacecloud.com/v2.0/", @path].join('/'))
+      end
+
       http_request = http_class.new(uri.request_uri)
-      http_request.initialize_http_header({"User-Agent" => "CodebaseApiRubyClient/#{RackspaceCloudDns::VERSION}"})
+      http_request.initialize_http_header({"User-Agent" => "RackspaceCloudDnsRubyClient/#{RackspaceCloudDns::VERSION}"})
       http_request.initialize_http_header({"Accept" => "application/json"})
       http_request.content_type = "application/json"
-      http_request.basic_auth CodebaseApi.account_user, CodebaseApi.api_key
     
       http = Net::HTTP.new(uri.host, uri.port)
     
@@ -37,6 +41,11 @@ module RackspaceCloudDns
         http.use_ssl = true
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       end
+
+      # show detailed info about the request
+      puts "[RackspaceCloudDns] Sent: #{data}"
+      puts "[RackspaceCloudDns] Requesting: #{[path].join('/')}"
+      
     
       http_result = http.request(http_request, @data.to_json)
       if http_result.body == 'true'
@@ -58,15 +67,14 @@ module RackspaceCloudDns
         raise RackspaceCloudDns::Errors::NotFound, json['error']
       when Net::HTTPBadRequest, Net::HTTPUnauthorized, Net::HTTPMethodNotAllowed
         json = JSON.parse(http_result.body)
-        raise RackspaceCloudDns::Errors::AccessDenied, "Access Denied for '#{RackspaceCloudDns.application}'  #{json['error']}"
+        raise RackspaceCloudDns::Errors::AccessDenied, "Access Denied'  #{json['error']}"
       else
         raise RackspaceCloudDns::Errors::CommunicationError, http_result.body
       end
 
-      # show detailed info about the request
-      puts "[Codebase API] Sent: #{data}".yellow
-      puts "[Codebase API] Requesting: #{[path].join('/')} on https://api3.codebasehq.com".yellow
-      puts "[Codebase API] Response: #{http_result.body}".yellow
+      puts "[RackspaceCloudDns] Response: #{http_result.body}"
+
+
 
       self
     end

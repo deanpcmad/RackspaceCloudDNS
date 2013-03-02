@@ -4,14 +4,18 @@ require 'net/https'
 require 'json'
 
 require "rackspace_cloud_dns/request"
+require "rackspace_cloud_dns/authenticate"
 require "rackspace_cloud_dns/version"
 
 module RackspaceCloudDns
 
 	class << self
+
+		# API Host. UK is default
+    attr_accessor :host
     
     # API Authentication
-    attr_accessor :account_user, :api_key
+    attr_accessor :username, :api_key
     
   end
 

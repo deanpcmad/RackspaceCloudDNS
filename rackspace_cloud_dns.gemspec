@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = RackspaceCloudDns::VERSION
   spec.authors       = ["Dean Perry"]
   spec.email         = ["dean@deanperry.net"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Rubygem to interact with the Rackspace Cloud DNS API}
+  spec.summary       = %q{Rackspace Cloud DNS API Gem}
   spec.homepage      = ""
   spec.license       = "MIT"
 
