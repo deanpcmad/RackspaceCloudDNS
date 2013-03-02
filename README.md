@@ -31,6 +31,11 @@ RackspaceCloudDns.api_key = "apikey"
 
 The RackspaceCloudDns gem is built to access all the Rackspace Cloud DNS functions. Below are a list of commands currently supported.
 
+### Authentication
+#### Authenticate a user and set the auth_token as the supplied token
+```ruby
+RackspaceCloudDns::Authenticate.new(RackspaceCloudDns.username, RackspaceCloudDns.api_key)
+```
 
 ### Domains
 #### All domains
