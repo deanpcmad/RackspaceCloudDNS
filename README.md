@@ -70,6 +70,11 @@ RackspaceCloudDns::Domain.destroy(123123)
 RackspaceCloudDns::Record.all(123123)
 ```
 
+#### Search all records for a domain
+```ruby
+RackspaceCloudDns::Record.search(123123, "type", "name", "data")
+```
+
 
 #### Create a new record for a domain
 The TTL is set to 3600 by default and the comment is optional
