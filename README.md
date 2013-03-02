@@ -48,6 +48,11 @@ RackspaceCloudDns::Domain.search("mydomain.com")
 RackspaceCloudDns::Domain.show(123123)
 ```
 
+#### Edit a domain by the domain ID
+```ruby
+RackspaceCloudDns::Domain.edit(123123, "email", "ttl", "comment")
+```
+
 #### Create a new domain
 The TTL is set to 3600 by default and the comment is optional
 ```ruby

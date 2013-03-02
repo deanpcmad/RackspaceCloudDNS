@@ -24,6 +24,13 @@ module RackspaceCloudDns
 			RackspaceCloudDns::Request.request("domains/#{domain_id}", :get)
 		end
 
+		# Edit a domain
+		def self.edit(domain_id, email_address, ttl=3600, comment="")
+			options = {:emailAddress => email_address, :ttl => ttl, :comment => comment}
+
+			RackspaceCloudDns::Request.request("domains/#{domain_id}", :put, options)
+		end
+
 		# Create a record on a domain
 		def self.create_record(domain_id, name, type, data, ttl=86400)
 			options = {:records => [:name => "#{name}.#{RackspaceCloudDns::Domain.show(domain_id)["name"]}", :type => type, :data => data, :ttl => ttl]}
