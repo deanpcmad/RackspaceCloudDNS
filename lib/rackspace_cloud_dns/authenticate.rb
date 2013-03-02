@@ -13,7 +13,7 @@ module RackspaceCloudDns
 
       # set the auth token & dns endpoint
       RackspaceCloudDns.auth_token = result["access"]["token"]["id"]
-      RackspaceCloudDns.dns_endpoint = result["access"]["serviceCatalog"].last["endpoints"].first["publicURL"]
+      RackspaceCloudDns.dns_endpoint = "https://lon.dns.api.rackspacecloud.com/v1.0/#{result["access"]["token"]["tenant"]["id"]}"
 
       return result
 		end
