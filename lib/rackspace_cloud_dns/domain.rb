@@ -9,5 +9,12 @@ module RackspaceCloudDns
 			RackspaceCloudDns::Request.request("domains", :post, options)
 		end
 
+
+
+		# List all domains
+		def self.all
+			RackspaceCloudDns::Request.request("domains", :get)
+		end
+
 	end
 end
