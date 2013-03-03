@@ -73,7 +73,7 @@ module RackspaceCloudDns
       when Net::HTTPNotFound
         json = JSON.parse(http_result.body)
         raise RackspaceCloudDns::Errors::NotFound, json['error']
-      when Net::HTTPBadRequest, Net::HTTPUnauthorized, Net::HTTPMethodNotAllowed
+      when Net::HTTPUnauthorized, Net::HTTPMethodNotAllowed
         json = JSON.parse(http_result.body)
         raise RackspaceCloudDns::Errors::AccessDenied, "Access Denied'  #{json['error']}"
       else
