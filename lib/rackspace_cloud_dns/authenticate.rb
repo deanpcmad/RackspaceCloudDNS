@@ -11,8 +11,9 @@ module RackspaceCloudDns
 
       result = RackspaceCloudDns::Request.request("tokens", :post, options)
 
-      # set the auth token & dns endpoint
+      # set the auth token, auth expires & dns endpoint
       RackspaceCloudDns.auth_token = result["access"]["token"]["id"]
+      RackspaceCloudDns.auth_expires = result["access"]["token"]["expires"]
       RackspaceCloudDns.dns_endpoint = "https://lon.dns.api.rackspacecloud.com/v1.0/#{result["access"]["token"]["tenant"]["id"]}"
 
       return result
