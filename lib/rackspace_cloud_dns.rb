@@ -19,8 +19,8 @@ module RackspaceCloudDns
     # API Authentication
     attr_accessor :username, :api_key
 
-    # Auth Token
-    attr_accessor :auth_token
+    # Auth Token & Auth Expires
+    attr_accessor :auth_token, :auth_expires
 
     # API DNS Endpoint
     attr_accessor :dns_endpoint
