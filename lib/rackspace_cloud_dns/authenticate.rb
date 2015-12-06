@@ -7,7 +7,7 @@ module RackspaceCloudDns
 		end
 
 		def self.new(username, api_key)
-      options = {:auth => { "RAX-KSKEY:apiKeyCredentials" => {:username => username, :apiKey => api_key} } }
+      options = {auth: { "RAX-KSKEY:apiKeyCredentials" => {username: username, apiKey: api_key} } }
 
       result = RackspaceCloudDns::Request.request("tokens", :post, options)
 

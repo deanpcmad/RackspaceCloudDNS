@@ -24,6 +24,16 @@ module RackspaceCloudDns
 
     # API DNS Endpoint
     attr_accessor :dns_endpoint
+
+    def auth
+      if self.auth_token.nil?
+        RackspaceCloudDns::Authenticate.new(self.username, self.api_key)
+      elsif !self.auth_expires.nil? && Time.now.utc > Time.parse(self.auth_expires)
+        RackspaceCloudDns::Authenticate.new(self.username, self.api_key)
+      else
+        true
+      end
+    end
     
   end
 
